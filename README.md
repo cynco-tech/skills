@@ -1,66 +1,16 @@
-```
-                                          _   _                                 _     __ _
-   __ _  ___ ___ ___  _   _ _ __ | |_(_)_ __   __ _     __      _____  _ __| | __/ _| | _____      __
-  / _` |/ __/ __/ _ \| | | | '_ \| __| | '_ \ / _` |____\ \ /\ / / _ \| '__| |/ / |_| |/ _ \ \ /\ / /
- | (_| | (_| (_| (_) | |_| | | | | |_| | | | | (_| |_____\ V  V / (_) | |  |   <|  _| | (_) \ V  V /
-  \__,_|\___\___\___/ \__,_|_| |_|\__|_|_| |_|\__, |      \_/\_/ \___/|_|  |_|\_\_| |_|\___/ \_/\_/
-                                               |___/
-```
+# accounting-skills
 
-**a claude code skill that does your malaysian accounting.
-the whole thing. bank statements in, financial statements out.**
+your accountant called in sick. claude's filling in.
 
-```
-  ┌─────────────────────────────────────────────────────────────────┐
-  │                                                                 │
-  │   bank statements     ──►  trial balance                        │
-  │   invoices & bills    ──►  income statement (P&L)               │
-  │   payslips            ──►  balance sheet                        │
-  │   fixed asset list    ──►  general ledger                       │
-  │   prior year accounts ──►  tax computation                      │
-  │                            working papers (.xlsx)               │
-  │                            financial statements (.pdf)          │
-  │                                                                 │
-  │   accrual basis. MPERS / MFRS / ITA 1967 compliant.            │
-  │                                                                 │
-  └─────────────────────────────────────────────────────────────────┘
-```
+a [claude code](https://docs.anthropic.com/en/docs/claude-code) skill for malaysian accounting — drop in your bank statements, get back accrual-basis financial statements, working papers, and tax computations. MPERS / MFRS / ITA 1967 compliant. sole prop, partnership, sdn bhd, berhad, NGO.
 
 ---
 
-## who is this for
+## install
 
+```bash
+npx @cynco/accounting-skills
 ```
-  ┌──────────────────────────────────────────────────────────────────┐
-  │                                                                  │
-  │   accounting firms    automate your engagement workflow.          │
-  │                       same process, every client, every time.    │
-  │                       brand the output with your firm name.      │
-  │                                                                  │
-  │   bookkeepers         get proper accrual-basis accounts          │
-  │                       from bank statements. no more manual       │
-  │                       spreadsheets.                              │
-  │                                                                  │
-  │   founders / owners   do your own company accounts.              │
-  │                       sdn bhd, sole prop, partnership —          │
-  │                       all supported. hand the output to          │
-  │                       your auditor or tax agent.                 │
-  │                                                                  │
-  │   solo accountants    one-person practice? this is your          │
-  │                       second pair of hands.                      │
-  │                                                                  │
-  └──────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## what is a claude code skill?
-
-a skill is a structured set of instructions and reference files that teaches claude how to do a specific task. think of it like a runbook — but instead of a human following steps, claude follows them.
-
-this skill lives in your `.claude/skills/` directory. when you tell claude to "process the accounts" or "start the accounting", it reads the skill, loads the right reference files at each phase, and walks through the full accounting pipeline.
-
-you need [claude code](https://docs.anthropic.com/en/docs/claude-code) (anthropic's CLI agent) or a compatible agent runner that supports the skills format.
 
 ---
 
