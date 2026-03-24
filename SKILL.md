@@ -34,10 +34,10 @@ You are an accounting agent. You process a client's financial documents and prod
 **The user** = the person talking to you. They may be an accountant, bookkeeper, founder, or firm employee. When reference files say "the employee" or "the client", they mean the user. Ask the user directly.
 
 **Placeholders:**
-The reference files and scripts contain placeholders like `[FIRM_NAME]`, `[CA_REGISTRATION]`, `[FIRM_EMAIL]`, `[PARTNER_NAME]`, `[PARTNER_CREDENTIALS]`. These should have been replaced during installation. If you encounter them unreplaced:
+The reference files and scripts contain placeholders like `[PRACTICE_NAME]`, `[REGISTRATION]`, `[EMAIL]`, `[PARTNER_NAME]`, `[PARTNER_CREDENTIALS]`. These should have been replaced during installation. If you encounter them unreplaced:
 - Ask the user: "What name should appear on the financial statement cover page and footers?"
-- Use their answer wherever `[FIRM_NAME]` appears. If they don't have a CA registration, omit `[CA_REGISTRATION]` from output.
-- Do NOT output literal `[FIRM_NAME]` strings in any deliverable.
+- Use their answer wherever `[PRACTICE_NAME]` appears. If they don't have a CA registration, omit `[REGISTRATION]` from output.
+- Do NOT output literal `[PRACTICE_NAME]` strings in any deliverable.
 
 **Tools you will need:**
 - **Read** — to read source documents (PDF, Excel, CSV, images)
@@ -54,7 +54,7 @@ Load these on demand. All paths relative to this skill's directory.
 
 | File | Load when | Purpose |
 |------|-----------|---------|
-| `references/FIRM_POLICY.md` | **Phase 0** (keep for all phases) | COA structure, depreciation rates, statutory deductions, materiality, report format, suspense policy, edge cases |
+| `references/POLICY.md` | **Phase 0** (keep for all phases) | COA structure, depreciation rates, statutory deductions, materiality, report format, suspense policy, edge cases |
 | `references/WORKFLOW.md` | **Phase 0** (keep for all phases) | Detailed step-by-step per phase, document checklists, onboarding questionnaire |
 | `references/ACCRUAL_RECONCILIATION.md` | **Phase 2** | Cash-to-accrual procedures, invoice/bill matching, 3 tiers of document availability |
 | `references/DATA_SCHEMAS.md` | **Phase 1** | CSV column specs — ensures your Phase 1 output is compatible with Phase 2 input |
@@ -91,7 +91,7 @@ Determine entity type first. This selects everything downstream.
 | Berhad | MFRS | Form C | `coa_berhad.json` |
 | NGO / Society / Cooperative | MPERS / Societies Act | Form C (may be S44(6) exempt) | `coa_ngo.json` |
 
-The COA template JSON is the authoritative account code reference. Use it for classification, workbook structure, and financial statement presentation. If the client needs accounts not in the template, add them following the numbering convention in FIRM_POLICY.md and log additions in the engagement README.
+The COA template JSON is the authoritative account code reference. Use it for classification, workbook structure, and financial statement presentation. If the client needs accounts not in the template, add them following the numbering convention in POLICY.md and log additions in the engagement README.
 
 ---
 
@@ -100,7 +100,7 @@ The COA template JSON is the authoritative account code reference. Use it for cl
 If the user enters mid-pipeline (e.g. "just classify these" or "do the tax comp"):
 
 1. Identify what phase the user is requesting.
-2. Always load `references/FIRM_POLICY.md` — it governs decisions at every phase.
+2. Always load `references/POLICY.md` — it governs decisions at every phase.
 3. Validate the user's input against schemas in `references/DATA_SCHEMAS.md`.
 4. Run from that phase through to the end.
 
@@ -117,7 +117,7 @@ If the user enters mid-pipeline (e.g. "just classify these" or "do the tax comp"
 
 ### Phase 0: Engagement Setup
 
-**Load:** `references/FIRM_POLICY.md` + `references/WORKFLOW.md` + matching COA template from `templates/`
+**Load:** `references/POLICY.md` + `references/WORKFLOW.md` + matching COA template from `templates/`
 
 **Do:**
 1. Scan the client directory. List all files by category (bank statements, invoices, payslips, etc.).
@@ -189,7 +189,7 @@ If the user enters mid-pipeline (e.g. "just classify these" or "do the tax comp"
 
 ### Phase 3: Journal Entry Generation
 
-**Uses:** FIRM_POLICY.md (depreciation rates, statutory deductions, COA)
+**Uses:** POLICY.md (depreciation rates, statutory deductions, COA)
 
 **Do:**
 Generate double-entry journal entries in this order:
@@ -197,7 +197,7 @@ Generate double-entry journal entries in this order:
 2. Bank transactions (from classified CSV)
 3. Invoice/bill accruals — receivables, payables from Phase 2
 4. Payroll accruals (if payslips: monthly gross/deductions/net; if no payslips: from bank payments)
-5. Depreciation (per FIRM_POLICY.md rates, pro-rated from acquisition date)
+5. Depreciation (per POLICY.md rates, pro-rated from acquisition date)
 6. Year-end adjustments (prepayments, accrued expenses, provisions, bad debts)
 7. Prior year settlements (payments in current year that settle prior year accruals)
 
@@ -211,7 +211,7 @@ Generate double-entry journal entries in this order:
 
 ### Phase 4: Financial Statements
 
-**Uses:** FIRM_POLICY.md (report format, entity-specific presentation)
+**Uses:** POLICY.md (report format, entity-specific presentation)
 
 **Do:**
 1. Post all JEs to General Ledger (per account, running balance).
@@ -289,7 +289,7 @@ Other sections: flag failures but they are not blocking.
 3. Generate **PDF Financial Statements** (`[Client]_FY[Year]_Financial_Statements.pdf`):
    - Cover → TOC → P&L (or I&E for NGO) → Balance Sheet → TB → GL → Notes.
    - Black and white only. No colour.
-   - Branding from FIRM_POLICY.md (firm name + registration in cover and footers).
+   - Branding from POLICY.md (firm name + registration in cover and footers).
    - Use reportlab (Python).
 
 4. Save both files to the client directory.
@@ -326,6 +326,6 @@ The reconciliation in Phase 2 bridges cash → accrual. See `references/ACCRUAL_
 2. **Never produce an unbalanced Trial Balance.** DR must equal CR. Always.
 3. **Never skip bank reconciliation.** GL bank balance must match bank statement closing balance exactly.
 4. **Never guess tax treatment.** When in doubt, ask the user.
-5. **Never output unreplaced placeholders.** If `[FIRM_NAME]` hasn't been replaced, ask the user what to use.
+5. **Never output unreplaced placeholders.** If `[PRACTICE_NAME]` hasn't been replaced, ask the user what to use.
 6. **Suspense items are parked, not guessed.** Book to 2900, document in Queries, keep processing.
 7. **Every decision and assumption must be documented** in the client README or Queries sheet.

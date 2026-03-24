@@ -1,0 +1,36 @@
+{
+  "name": "@cynco/accounting-skills",
+  "version": "1.0.0",
+  "description": "Malaysian accounting skill for Claude Code. Processes client documents into MPERS/MFRS-compliant financial statements.",
+  "type": "module",
+  "bin": {
+    "accounting-skills": "./install.js"
+  },
+  "files": [
+    "install.js",
+    "SKILL.md",
+    "LICENSE.txt",
+    "references/",
+    "templates/",
+    "scripts/"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "accounting",
+    "malaysia",
+    "mpers",
+    "mfrs",
+    "bookkeeping",
+    "financial-statements"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cynco-tech/accounting-skills.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

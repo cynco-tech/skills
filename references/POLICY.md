@@ -1,13 +1,13 @@
-# Firm Policy & Accounting Standards
+# Accounting Policy & Standards
 
-> **Placeholders:** `[FIRM_NAME]`, `[CA_REGISTRATION]`, `[FIRM_EMAIL]` below should have been replaced during installation. If they still show as placeholders, ask the user what to use for report branding. See SKILL.md Conventions for details.
+> **Placeholders:** `[PRACTICE_NAME]`, `[REGISTRATION]`, `[EMAIL]` below should have been replaced during installation. If they still show as placeholders, ask the user what to use for report branding. See SKILL.md Conventions for details.
 
-## Firm Identity
+## Identity
 
-- **Firm**: [FIRM_NAME]
-- **Registration**: [CA_REGISTRATION]
+- **Name**: [PRACTICE_NAME]
+- **Registration**: [REGISTRATION]
 - **Services**: Accounting, Tax, Advisory
-- **Contact**: [FIRM_EMAIL]
+- **Contact**: [EMAIL]
 
 ---
 
@@ -214,7 +214,7 @@ You uses the following base COA structure. It adapts based on entity type and cl
 
 ### PDF Financial Statements (Client Deliverable)
 Using reportlab (Python). Always include:
-1. **Cover Page**: Client name, registration number, "Financial Statements", FY period, "Prepared by [FIRM_NAME] Chartered Accountants ([CA_REGISTRATION])"
+1. **Cover Page**: Client name, registration number, "Financial Statements", FY period, "Prepared by [PRACTICE_NAME] ([REGISTRATION])"
 2. **Table of Contents**: Page-numbered
 3. **Statement of Comprehensive Income** (Profit & Loss)
 4. **Statement of Financial Position** (Balance Sheet)
@@ -222,7 +222,7 @@ Using reportlab (Python). Always include:
 6. **General Ledger**
 7. **Notes & Queries** (if any open items exist)
 
-Footer on every page (except cover): "[FIRM_NAME] Chartered Accountants ([CA_REGISTRATION])" left, "Page X" right.
+Footer on every page (except cover): "[PRACTICE_NAME] ([REGISTRATION])" left, "Page X" right.
 
 ### Excel Working Papers (Internal)
 Always include these sheets:

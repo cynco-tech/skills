@@ -366,7 +366,7 @@ class PageNumberTracker:
         # Left footer
         canvas.drawString(
             MARGIN, 1.2 * cm,
-            "[FIRM_NAME] Chartered Accountants ([CA_REGISTRATION])"
+            "[PRACTICE_NAME] ([REGISTRATION])"
         )
         # Right footer - page number
         canvas.drawRightString(
@@ -476,14 +476,14 @@ def build_cover(styles):
     elements.append(Spacer(1, 8 * cm))
 
     elements.append(Paragraph("Prepared by:", styles["CoverFooter"]))
-    elements.append(Paragraph("<b>[FIRM_NAME]</b>", styles["CoverFooter"]))
-    elements.append(Paragraph("Chartered Accountants ([CA_REGISTRATION])", styles["CoverFooter"]))
+    elements.append(Paragraph("<b>[PRACTICE_NAME]</b>", styles["CoverFooter"]))
+    elements.append(Paragraph("([REGISTRATION])", styles["CoverFooter"]))
     elements.append(Spacer(1, 0.5 * cm))
     elements.append(Paragraph("Partner: [PARTNER_NAME]", styles["CoverFooter"]))
     elements.append(Paragraph(
         "[PARTNER_CREDENTIALS]", styles["CoverFooter"]
     ))
-    elements.append(Paragraph("[FIRM_EMAIL]", styles["CoverFooter"]))
+    elements.append(Paragraph("[EMAIL]", styles["CoverFooter"]))
 
     elements.append(NextPageTemplate("content"))
     elements.append(PageBreak())

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-[FIRM_NAME] — Standardised PDF Financial Statements Generator
+[PRACTICE_NAME] — Standardised PDF Financial Statements Generator
 
 Usage:
     python generate_pdf_report.py <input_xlsx> <output_pdf> [--entity-type sdn_bhd|sole_prop|partnership]
@@ -36,8 +36,8 @@ MARGIN_T = 18 * mm
 MARGIN_B = 18 * mm
 CONTENT_W = PAGE_W - MARGIN_L - MARGIN_R
 
-FIRM = "[FIRM_NAME]"
-FIRM_SUB = "Chartered Accountants ([CA_REGISTRATION])"
+PRACTICE = "[PRACTICE_NAME]"
+PRACTICE_SUB = "([REGISTRATION])"
 
 BLACK = colors.Color(0, 0, 0)
 DARK_GREY = colors.Color(0.2, 0.2, 0.2)
@@ -127,7 +127,7 @@ def on_page(canvas_obj, doc):
         canvas_obj.saveState()
         canvas_obj.setFont('Helvetica', 7)
         canvas_obj.setFillColor(MID_GREY)
-        canvas_obj.drawString(MARGIN_L, 10*mm, f"{FIRM} {FIRM_SUB}")
+        canvas_obj.drawString(MARGIN_L, 10*mm, f"{PRACTICE} {PRACTICE_SUB}")
         canvas_obj.drawRightString(PAGE_W - MARGIN_R, 10*mm, f"Page {pn - 1}")
         canvas_obj.setStrokeColor(LIGHT_RULE)
         canvas_obj.setLineWidth(0.4)
@@ -236,8 +236,8 @@ def build_cover(story, client_name, reg_no, fy_desc):
     story.append(Spacer(1, 12*mm))
     story.append(Paragraph("Prepared by", ParagraphStyle('PB', fontName='Helvetica',
         fontSize=9, leading=13, alignment=TA_CENTER, textColor=MID_GREY, spaceAfter=3*mm)))
-    story.append(Paragraph(FIRM, sty_cover_firm))
-    story.append(Paragraph(FIRM_SUB, sty_cover_firm_sub))
+    story.append(Paragraph(PRACTICE, sty_cover_firm))
+    story.append(Paragraph(PRACTICE_SUB, sty_cover_firm_sub))
     story.append(PageBreak())
 
 def build_toc(story, client_name, sections):

@@ -9,7 +9,7 @@ This document defines the mandatory step-by-step workflow for every client engag
 **Objective**: Understand the client, identify what we're working with, and assess readiness.
 
 ### Step 0.1 — Read Firm Instructions
-- Read `references/FIRM_POLICY.md` (firm policies, standards, COA, depreciation rates, etc.)
+- Read `references/POLICY.md` (firm policies, standards, COA, depreciation rates, etc.)
 - Read this file (`WORKFLOW.md`)
 - If a client-specific `README.md` exists in the folder, read it (contains prior engagement notes, client preferences, known issues)
 
@@ -463,7 +463,7 @@ Less: CP204 instalments paid
 - [ ] Capital allowances: traces back to fixed asset register
 - [ ] No fabricated data — every number traces to a source document or explicit user decision
 - [ ] Suspense account: zero balance, OR all items documented in Queries sheet
-- [ ] Report format: black & white, minimal, clean, [FIRM_NAME] branding
+- [ ] Report format: black & white, minimal, clean, [PRACTICE_NAME] branding
 
 ### Internal Notes for User
 Flag anything that requires professional judgement or client follow-up:
@@ -480,11 +480,11 @@ Final compiled list of all outstanding items the client needs to address.
 ## PHASE 7: OUTPUT GENERATION
 
 ### Step 7.1 — Excel Working Papers
-Generate comprehensive Excel workbook with all sheets as per FIRM_POLICY.md specifications.
+Generate comprehensive Excel workbook with all sheets as per POLICY.md specifications.
 Run formula recalculation (LibreOffice recalc.py if available).
 
 ### Step 7.2 — PDF Financial Statements
-Generate using reportlab per FIRM_POLICY.md format standards:
+Generate using reportlab per POLICY.md format standards:
 - Cover page
 - Table of contents
 - P&L, BS, TB, GL

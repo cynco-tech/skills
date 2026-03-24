@@ -633,7 +633,7 @@ if __name__ == "__main__":
         ("", ""),
         ("Going Concern:", "See Queries & Notes sheet for going concern assessment"),
         ("", ""),
-        ("Prepared by:", "[FIRM_NAME] Chartered Accountants ([CA_REGISTRATION])"),
+        ("Prepared by:", "[PRACTICE_NAME] ([REGISTRATION])"),
         ("Date:", date.today().strftime("%d %B %Y")),
     ]
 

@@ -153,13 +153,13 @@ three layers. the agent only loads what it needs, when it needs it.
 ## what's in the box
 
 ```
-  accounting-workflow/
+  accounting-skills/
   │
   ├── SKILL.md ·························· the brain (trigger + pipeline)
   ├── LICENSE.txt ······················· MIT
   │
   ├── references/
-  │   ├── FIRM_POLICY.md ················ COA, depreciation, statutory deductions, report format
+  │   ├── POLICY.md ················· COA, depreciation, statutory deductions, report format
   │   ├── WORKFLOW.md ··················· step-by-step for all 8 phases
   │   ├── ACCRUAL_RECONCILIATION.md ···· cash-to-accrual, invoice/bill matching
   │   ├── DATA_SCHEMAS.md ·············· CSV column specs for data handoff between phases
@@ -193,9 +193,15 @@ three layers. the agent only loads what it needs, when it needs it.
 - python 3.10+ with `openpyxl`, `reportlab`, `pdfplumber` (`pip install -r scripts/requirements.txt`)
 - a vision model for scanned bank statements (claude vision, openai, mistral, etc.)
 
-**install:**
+**install (pick one):**
 
-1. copy `accounting-workflow/` into your `.claude/skills/` directory.
+```bash
+# option 1: npx (recommended)
+npx @cynco/accounting-skills
+
+# option 2: git clone
+git clone https://github.com/cynco-tech/accounting-skills.git ~/.claude/skills/accounting-skills
+```
 
 2. personalise the output — find-and-replace these placeholders:
 
@@ -203,9 +209,9 @@ three layers. the agent only loads what it needs, when it needs it.
   ┌──────────────────────────┬─────────────────────────────────────────────┐
   │ placeholder              │ what to put                                 │
   ├──────────────────────────┼─────────────────────────────────────────────┤
-  │ [FIRM_NAME]              │ your name, company, or practice name        │
-  │ [CA_REGISTRATION]        │ CA reg number — or delete if not applicable │
-  │ [FIRM_EMAIL]             │ your contact email                          │
+  │ [PRACTICE_NAME]          │ your name, company, or practice name        │
+  │ [REGISTRATION]           │ registration number — or delete if N/A      │
+  │ [EMAIL]                  │ your contact email                          │
   │ [PARTNER_NAME]           │ your name or the person signing off         │
   │ [PARTNER_CREDENTIALS]    │ credentials (CA(M), CPA) — or delete       │
   └──────────────────────────┴─────────────────────────────────────────────┘
@@ -213,9 +219,9 @@ three layers. the agent only loads what it needs, when it needs it.
 
    these control the branding on your PDF cover pages, Excel headers, and footers. fill in what applies, delete what doesn't. there's no wrong answer here — a founder can put their company name, a bookkeeper can put their practice name, a firm can put their CA registration.
 
-   quickest way: `grep -r "\[FIRM_NAME\]" .` then find-and-replace.
+   quickest way: `grep -r "\[PRACTICE_NAME\]" .` then find-and-replace.
 
-3. review `references/FIRM_POLICY.md` — adjust depreciation rates, materiality thresholds, report format if yours differ from the defaults.
+3. review `references/POLICY.md` — adjust depreciation rates, materiality thresholds, report format if yours differ from the defaults.
 
 4. review `templates/coa_*.json` — standard malaysian COA structure, but you might want to add or rename accounts for your industry.
 
@@ -260,7 +266,7 @@ the skill activates and walks you through the pipeline, phase by phase.
   ┌──────────────────────────────────┬──────────────────────────────────────┐
   │ what to change                   │ where                                │
   ├──────────────────────────────────┼──────────────────────────────────────┤
-  │ accounting policies, rates,      │ references/FIRM_POLICY.md            │
+  │ accounting policies, rates,      │ references/POLICY.md            │
   │ materiality, report format       │                                      │
   │                                  │                                      │
   │ chart of accounts                │ templates/coa_*.json                 │
@@ -295,7 +301,7 @@ you need enough accounting knowledge to review the output and answer the skill's
 nope. if you can use claude code, you can use this. the scripts in `scripts/` are reference code for when you want to understand how something works under the hood — you don't need to run them manually.
 
 **do i need a CA registration to use this?**
-no. the `[CA_REGISTRATION]` placeholder is optional. if you're a firm, fill it in. if you're a founder or bookkeeper doing your own accounts, leave it blank or remove it from the templates.
+no. the `[REGISTRATION]` placeholder is optional. if you're a firm, fill it in. if you're a founder or bookkeeper doing your own accounts, leave it blank or remove it from the templates.
 
 **i'm a founder — can i use this for my own sdn bhd?**
 yes. point it at your bank statements, answer its questions, and you'll get working papers + financial statements you can hand to your auditor or tax agent.
@@ -313,19 +319,19 @@ the skill handles three tiers: full documents (bank + invoices + bills), partial
 it goes to account 2900 (suspense) and gets flagged in the queries & notes sheet. the skill never guesses. it parks unknowns and keeps going.
 
 **does it handle EPF, SOCSO, EIS, PCB?**
-yes. employer and employee rates are built into FIRM_POLICY.md. it even checks whether the employer absorbs employee contributions (some do — the skill reads payslips to determine the actual structure).
+yes. employer and employee rates are built into POLICY.md. it even checks whether the employer absorbs employee contributions (some do — the skill reads payslips to determine the actual structure).
 
 **what about capital allowances and depreciation?**
 both. accounting depreciation (straight-line, per MPERS/MFRS) and tax capital allowances (per Schedule 3 ITA 1967) are separate computations. the skill handles them independently.
 
 **does it handle trading businesses with inventory?**
-yes. COA templates include COGS/Purchases and stock accounts. if stock records are provided, it computes closing stock. if not, it asks for the figure from a physical count. see edge case 8a in FIRM_POLICY.md.
+yes. COA templates include COGS/Purchases and stock accounts. if stock records are provided, it computes closing stock. if not, it asks for the figure from a physical count. see edge case 8a in POLICY.md.
 
 **will this replace my auditor?**
 no. this produces management accounts and working papers. it doesn't audit. it does, however, produce accounts clean enough that your auditor will have a much easier time.
 
 **can i use this for my own firm's branding?**
-that's what the placeholders are for. replace `[FIRM_NAME]` and friends with your details, and every output — Excel, PDF, cover pages — carries your branding.
+that's what the placeholders are for. replace `[PRACTICE_NAME]` and friends with your details, and every output — Excel, PDF, cover pages — carries your branding.
 
 **can i modify and redistribute this?**
 yes. MIT license. do what you want with it.

@@ -39,7 +39,7 @@ If ANY Section A check fails: **DO NOT PROCEED TO OUTPUT. Fix the error first.**
 |---|---|---|---|
 | C1 | Correct framework applied | Sdn Bhd = MPERS, Sole Prop/Partnership = Accrual per S21A ITA | YES |
 | C2 | Accrual basis verified | Revenue recognised when earned, expenses when incurred (not just cash basis) | YES |
-| C3 | Depreciation policy consistent | Same rates applied across all assets of same category, consistent with FIRM_POLICY.md | YES |
+| C3 | Depreciation policy consistent | Same rates applied across all assets of same category, consistent with POLICY.md | YES |
 | C4 | Related party transactions disclosed | If any identified, included in notes | NO (flag if missed) |
 | C5 | Director remuneration disclosed (Sdn Bhd) | Separate line item on P&L, disclosed in notes | NO (Sdn Bhd only) |
 | C6 | SST compliance (if registered) | SST payable correctly computed and disclosed | NO (if applicable) |
@@ -67,7 +67,7 @@ If ANY Section A check fails: **DO NOT PROCEED TO OUTPUT. Fix the error first.**
 | # | Check | Pass Criteria | Blocker? |
 |---|---|---|---|
 | E1 | PDF is B&W only | No colour in the PDF financial statements | YES |
-| E2 | Firm branding correct | "[FIRM_NAME] Chartered Accountants ([CA_REGISTRATION])" on cover and footer | YES |
+| E2 | Branding correct | "[PRACTICE_NAME] ([REGISTRATION])" on cover and footer (if configured) | YES |
 | E3 | Client name correct | Legal entity name matches SSM registration | YES |
 | E4 | FY period correct | Correct financial year end date throughout | YES |
 | E5 | Page numbers present | All pages (except cover) have page numbers | NO (flag) |

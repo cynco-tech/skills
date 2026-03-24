@@ -1,16 +1,16 @@
 {
-  "name": "accounting-workflow",
+  "name": "accounting-skills",
   "owner": {
     "name": "Cynco Sdn. Bhd.",
     "email": "hazli.johar@cynco.io"
   },
   "metadata": {
-    "description": "Malaysian accounting engagement workflow for Claude Code",
+    "description": "Malaysian accounting skill for Claude Code",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "accounting-workflow",
+      "name": "accounting-skills",
       "description": "Processes client financial documents into accrual-basis financial statements, working papers, and tax computations compliant with MPERS, MFRS, and ITA 1967. Supports Sole Prop, Partnership, Sdn Bhd, Berhad, and NGO.",
       "source": "./",
       "strict": false,
