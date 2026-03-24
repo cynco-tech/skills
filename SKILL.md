@@ -1,5 +1,6 @@
 ---
 name: accounting-workflow
+license: Complete terms in LICENSE.txt
 description: |
   End-to-end Malaysian accounting engagement workflow. Takes a client folder and produces accrual-basis financial statements (Excel working papers + PDF) compliant with MPERS / MFRS / ITA 1967. Covers Sole Proprietor, Partnership, Sdn Bhd, Berhad, and NGO.
 

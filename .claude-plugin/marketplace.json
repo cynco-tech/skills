@@ -1,0 +1,22 @@
+{
+  "name": "accounting-workflow",
+  "owner": {
+    "name": "Cynco Sdn. Bhd.",
+    "email": "hazli@hazlijohar.my"
+  },
+  "metadata": {
+    "description": "End-to-end Malaysian accounting engagement workflow. Bank statements in, MPERS/MFRS-compliant financial statements out.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "accounting-workflow",
+      "description": "Full accounting pipeline: extraction, classification, journal entries, financial statements, tax computation, QC, and output generation for Malaysian entities (Sole Prop, Partnership, Sdn Bhd, Berhad, NGO)",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "."
+      ]
+    }
+  ]
+}

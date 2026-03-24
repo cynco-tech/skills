@@ -156,8 +156,7 @@ three layers. the agent only loads what it needs, when it needs it.
   accounting-workflow/
   │
   ├── SKILL.md ·························· the brain (trigger + pipeline)
-  ├── LICENSE ···························· MIT
-  ├── requirements.txt ·················· python dependencies
+  ├── LICENSE.txt ······················· MIT
   │
   ├── references/
   │   ├── FIRM_POLICY.md ················ COA, depreciation, statutory deductions, report format
@@ -169,6 +168,7 @@ three layers. the agent only loads what it needs, when it needs it.
   │
   ├── scripts/
   │   ├── README.md ···················· architecture overview
+  │   ├── requirements.txt ············ python dependencies
   │   ├── extract_bank_statements_reference.py
   │   ├── classify_transactions_reference.py
   │   ├── build_workpapers_reference.py
@@ -190,7 +190,7 @@ three layers. the agent only loads what it needs, when it needs it.
 
 **you need:**
 - [claude code](https://docs.anthropic.com/en/docs/claude-code) or a compatible agent runner that supports skills
-- python 3.10+ with `openpyxl`, `reportlab`, `pdfplumber` (`pip install -r requirements.txt`)
+- python 3.10+ with `openpyxl`, `reportlab`, `pdfplumber` (`pip install -r scripts/requirements.txt`)
 - a vision model for scanned bank statements (claude vision, openai, mistral, etc.)
 
 **install:**
